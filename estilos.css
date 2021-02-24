@@ -1,0 +1,577 @@
+
+/* ------------
+
+ESTILOS PREDEFINIDOS
+
+------------ */
+
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    font-family: sans-serif;
+    word-spacing: 3px;
+    letter-spacing: 3px;
+    line-height: 24px;
+}
+
+p{
+    line-height: 35px;
+}
+a {
+    text-decoration: none;
+}
+h3{
+    font-size: 0.9em;
+}
+li a {
+    color: black;
+}
+hr{
+    width: 15%;
+    margin: 20px auto;
+    border: 0.5px solid lightgray;
+}
+
+/* ------------
+
+MENÚ ORDENADOR
+
+------------ */
+
+#desktop{
+    width: 100%;
+    background-color: white;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    font-size: 0.9em;
+    /* font-weight: 500; */
+}
+
+.navLogo{
+    max-width: 200px;
+    min-width: 150px;
+}
+.navLogo img{
+    width: 100%;
+}
+#desktop ul li ul{
+    /* display: none; */
+    position: absolute;
+    background-color: black;
+    list-style: none;
+    padding: 5px;
+    opacity: 0;
+    transition: opacity .4s;
+    z-index: -10;
+}
+#desktop ul li ul a{
+    color: white; 
+}
+#desktop ul li:hover ul {
+    display: block;
+    /* transition: all 5s; */
+    opacity: 1;
+    z-index: 100; 
+}
+#desktop a:hover{
+    color: rgb(173, 172, 172);
+}
+#desktop>ul{
+    display: flex;
+    list-style-type: none;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+#desktop>ul li{
+    margin: 0 10px;
+    padding: 10px 0;
+}
+
+/* ------------
+
+MENÚ MÓVIL
+
+------------ */
+
+#mobile{
+    padding: 16px;
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 100;
+    }
+
+#mobile .navLogo {
+    max-width: 200px;
+    min-width: 150px;
+    display: table;
+}
+#mobile .navLogo img {
+    display: table;
+    width: 60%;
+}
+
+/* MENÚ MÓVIL DESPLEGABLE  */
+
+.menuMobile{
+    transform: rotate(90deg);
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    /*  transform: scaleY(2.3);  */
+}
+#mobile label span{
+    transform: scaleY(1.7);
+    display: table;
+}
+.escMenu{
+    display: none;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 3em;
+}
+.checkbox:checked ~ .menuMobile{
+    left: 40%;
+    border-radius: 0 0.5rem 0.5rem 0;
+    display: none;
+}
+.checkbox:checked ~ .escMenu{
+    display: block;
+}
+.checkbox:checked ~ .menuMobile{
+    left: 40%;
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+.left-panel{
+    width: 80%;
+    height: 100%;
+    background: white;
+    position: fixed;
+    top: 0;
+    left: -80%;
+    transition: left 0.4s;
+}
+.checkbox:checked ~ .left-panel{
+    left: 0%;
+}
+.checkbox{
+    display: none;
+}
+
+/* INTERIOR DEL MENÚ MÓVIL DESPLEGABLE */
+
+#menCheck * { 
+    /* Toda la lisa sin decoración */
+    list-style:none;
+    text-transform: capitalize;
+}
+#menCheck li{ 
+    /* Altura de la separación */
+    line-height:180%;
+}
+#menCheck li a{
+    /* Color y decoración del texto */
+    color:#222; 
+    text-decoration:none;
+}
+/*#menCheck li a:after{ 
+    Para que aparezca una flecha en los enlaces de las listas que son simbolos ASCII y Unicode indicado en "content"
+    content:"\025b8"; 
+    color:#ddd; 
+    margin-right:4px;
+}*/
+#menCheck input[name="list"] {
+    /* Estilo del input (cuadrado del checkbox) */
+    position: absolute;
+    display: none;
+	/* left: -1000em; */
+}
+#menCheck label:after{
+    /* Estilo del label que (label se asocia a la etiqueta input por medio del id para que input se active) */
+    content:" »"; 
+    margin-right:4px;
+}
+#menCheck input:checked li{
+    position: absolute;
+    z-index: 1000;
+}
+#menCheck input:checked ~ label:before{
+    /* Estilo del label secundario para volver que esta despúes de un input */
+    content:"« Back";
+    position: absolute;
+    top: 20px;
+    background-color: white;
+    width: 80%;
+    height: 90%;
+    z-index: 100;
+}
+#menCheck input:checked ~ label:after{
+    /* Estilo del label secundario para volver que esta despúes de un input */
+    content: none;
+}
+#menCheck .interior{
+    /* Estilo del interior de la ul oculto hasta hacer check en el input ul */
+    display: none;
+}
+
+#menCheck input:checked ~ ul{
+    /* Estilo del interior de la ul cuando hacemos check en ul  */
+    display:block;
+    position: absolute;
+    z-index: 1000;
+    top: 35px;
+    left: 30px;
+}
+#menCheck li ul li {
+    margin-left: -10px;
+} 
+#menCheck{
+    margin-top: 35px;
+} 
+#menCheck li ul {
+    margin-top: 13px;
+    padding-left: 30px;
+}
+
+/* ------------
+
+CABECERRA DE LA PÁGINA
+
+------------ */
+
+/* INDEX PÁGINA */
+
+#headerHome {
+    width: 100%;
+    height: 100vh;
+    background-image: url(images/onward_logo4.png), url(images/onward_back_2019.jpg);
+    background-color: #6096FF;
+    background-origin: content-box;
+    background-repeat: no-repeat, no-repeat;
+    background-position: 50% 61%, 50% 0%;
+    background-size: 75%, cover;
+    background-attachment: scroll, fixed;
+}
+
+
+/* ------------
+
+GRIDS DE LA PÁGINA
+
+------------ */
+
+#grids {
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    text-align: center;
+    padding: 9% 3%;
+    display: flex;
+}
+#grids>div {
+    padding: 1%;
+}
+#grids>div>div {
+    max-width: 340px;
+    max-height: 220px;
+    overflow: hidden;
+    margin-bottom: 35px;
+}
+#grids img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+
+/* ------------
+
+PIE DE PÁGINA
+
+------------ */
+
+footer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+}
+footer div:nth-child(1), footer div:nth-child(2){
+    max-width: 150px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+footer div:nth-child(2):hover span {
+    color: lightgray;
+}
+footer div:nth-child(2) a:hover span {
+    color: black;
+}
+footer div:nth-child(3)>h3{
+    margin-top: 0;
+    color: gray;
+    font-weight: 100;
+}
+footer div:nth-child(3)>h3 a{
+    color: gray;
+    /* Me gustaría separar un poco más la línea del texto, es posible? */
+    text-decoration: underline;
+}
+footer div:nth-child(3) h3+h3 {
+    margin-bottom: 80px;
+    text-decoration: none;
+}
+footer img {
+    width: 100%;
+}
+footer span {
+    font-size: 1.4em;
+    color: black;
+    margin: 7px;
+    text-align: center;
+
+    
+}
+
+
+/* ------------
+
+
+
+
+SPARKSHORTS PÁGINA
+
+
+
+
+
+------------ */
+
+
+
+/* SPARKSHORTS HEADER */
+
+#headerSparkShorts {
+
+    width: 100%;
+    height: 100vh;
+    background-image: url(images/head_logo_Sparks.jpg);
+    background-color: black;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 75%;
+    background-attachment: scroll;
+
+}
+
+
+/* SPARKSHORTS VIDEO */
+
+#videoSpark {
+    line-height: 35px;
+    padding: 10% 16% 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#videoSpark>div {
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+#videoSpark iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+
+
+
+/* PORTADAS PELIS */
+
+#imagesFilms {
+    padding: 0 12%;
+    margin-top: 36px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#imagesFilms>div {
+    width: 33%;
+    margin: 10px 0;
+    padding: 0px 5%;
+    text-align: center;
+}
+
+#imagesFilms img {
+    width: 100%;
+}
+
+/* DESCRIPCIÓN PELIS */
+
+#descriptionFilms {
+    padding: 0 10%;
+    margin-bottom: 150px;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+#descriptionFilms>div {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+    margin: 50px 0px 30px;
+}
+
+#descriptionFilms>div>div {
+    width: 50%;
+    padding: 0 15px;
+}
+
+#descriptionFilms img {
+    width: 100%;
+}
+
+#descriptionFilms h3 {
+    font-size: 2.5em;
+    margin-top: 11px;
+    font-weight: 100;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 850px){
+
+    hr{
+        width: 75%;
+    }
+
+    #desktop {
+        margin: 17px 0;
+    }
+    footer div:nth-child(2) {
+        max-width: 250px;
+    }
+    footer div:nth-child(3) {
+        padding: 0 11%;
+    }
+
+
+
+    /* ------------
+
+    SPARKSHORTS PÁGINA
+
+    ------------ */
+    hr{
+        width: 75%;
+    }
+
+    #imagesFilms, #descriptionFilms {
+        padding: 0px 6%;
+    }
+
+
+ 
+
+
+
+
+
+
+
+
+}
+@media (max-width: 650px){
+
+
+    hr{
+        width: 90%;
+    }
+
+    #desktop {
+        display: none;
+    }
+
+    #mobile{
+        display: block;
+    }
+
+    #grids {
+       flex-wrap: wrap;
+    }
+    #grids>div>div {
+        max-width: none;
+        max-height: none;
+        margin: 20px 0;
+    }
+    footer div:nth-child(1) {
+        max-width: none;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+
+    /* ------------
+
+    SPARKSHORTS PÁGINA
+
+    ------------ */
+
+
+
+    #imagesFilms>div {
+        width: 50%;
+
+    }
+
+    #descriptionFilms>div {
+        flex-flow: column;
+    }
+
+    #descriptionFilms>div>div {
+        width: auto;
+        padding: 0;
+    }
+
+
+    #descriptionFilms h3 {
+        font-size: 1.5em;
+        margin: 1em 0;
+        font-weight: 100;
+    }
+
+}
+
+
+
+
+
